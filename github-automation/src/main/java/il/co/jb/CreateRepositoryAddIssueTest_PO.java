@@ -8,6 +8,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
 
+import il.co.jb.pages.GitHubCreateNewRepositoryPage;
+import il.co.jb.pages.GitHubLandingPage;
+import il.co.jb.pages.GitHubRepositoryCodePage;
+import il.co.jb.pages.GitHubRepositoryIssuesPage;
+import il.co.jb.pages.GitHubSignInPage;
+import il.co.jb.pages.GitHubStartPage;
+
 public class CreateRepositoryAddIssueTest_PO {
 
 	@Test
@@ -35,5 +42,20 @@ public class CreateRepositoryAddIssueTest_PO {
 		gitHubSignInPage.writeUsername(username);
 		gitHubSignInPage.writePassword(password);
 		gitHubSignInPage.clickSignInButton();
+		
+		GitHubStartPage gitHubStartPage = new GitHubStartPage(driver);
+		gitHubStartPage.clickStartProjectButton();
+		
+		GitHubCreateNewRepositoryPage gitHubCreateNewRepositoryPage = new GitHubCreateNewRepositoryPage(driver);
+		gitHubCreateNewRepositoryPage.writeRepositoryName(repositoryName);
+		gitHubCreateNewRepositoryPage.writeRepositoryDescription("This repository was created on: " + dateFormat2.format(testStartTime));
+		gitHubCreateNewRepositoryPage.clickRepositoryVisibilityPrivateRadioButton();
+		gitHubCreateNewRepositoryPage.clickCreateRepositoryButton();
+		
+		GitHubRepositoryCodePage gitHubRepositoryCodePage = new GitHubRepositoryCodePage(driver);
+		gitHubRepositoryCodePage.clickIssuesTab(username, repositoryName);
+		
+		GitHubRepositoryIssuesPage gitHubRepositoryIssuesPage = new GitHubRepositoryIssuesPage(driver);
+		gitHubRepositoryIssuesPage.clickNewIssueButton(username, repositoryName);
 	}
 }

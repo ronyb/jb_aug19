@@ -1,18 +1,16 @@
-package il.co.jb;
+package il.co.jb.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class GitHubSignInPage {
+public class GitHubSignInPage extends AbstractPage {
 
-	private WebDriver driver;
-	
-	By usernameInput = By.id("login_field");
-	By passwordInput = By.id("password");
-	By signInButton = By.xpath("//input[@name='commit']");
+	private static final By usernameInput = By.id("login_field");
+	private static final By passwordInput = By.id("password");
+	private static final By signInButton = By.xpath("//input[@name='commit']");
 	
 	public GitHubSignInPage(WebDriver driver) {
-		this.driver = driver;
+		super(driver);
 	}
 	
 	public void writeUsername(String username) {
