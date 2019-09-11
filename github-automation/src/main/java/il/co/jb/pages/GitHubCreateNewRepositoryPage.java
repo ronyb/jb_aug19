@@ -5,8 +5,6 @@ import org.openqa.selenium.WebDriver;
 
 public class GitHubCreateNewRepositoryPage extends AbstractPage {
 
-	private WebDriver driver;
-	
 	private static final By repositoryNameInput = By.id("repository_name");
 	private static final By repositoryDescriptionInput = By.id("repository_description");
 	private static final By repositoryVisibilityPrivateRadioButton = By.id("repository_visibility_private");
