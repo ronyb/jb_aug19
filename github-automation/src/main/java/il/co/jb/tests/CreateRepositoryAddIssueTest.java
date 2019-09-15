@@ -1,21 +1,21 @@
-package il.co.jb;
+package il.co.jb.tests;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import il.co.jb.pages.GitHubCreateNewRepositoryPage;
-import il.co.jb.pages.GitHubLandingPage;
-import il.co.jb.pages.GitHubRepositoryCodePage;
-import il.co.jb.pages.GitHubRepositoryIssuesPage;
-import il.co.jb.pages.GitHubSignInPage;
-import il.co.jb.pages.GitHubStartPage;
+import il.co.jb.infra.pages.GitHubCreateNewIssuePage;
+import il.co.jb.infra.pages.GitHubCreateNewRepositoryPage;
+import il.co.jb.infra.pages.GitHubExistingIssuePage;
+import il.co.jb.infra.pages.GitHubLandingPage;
+import il.co.jb.infra.pages.GitHubRepositoryCodePage;
+import il.co.jb.infra.pages.GitHubRepositoryIssuesPage;
+import il.co.jb.infra.pages.GitHubSignInPage;
+import il.co.jb.infra.pages.GitHubStartPage;
 
-public class CreateRepositoryAddIssueTest_PO {
+public class CreateRepositoryAddIssueTest extends AbstractTest {
 
 	@Test
 	public void _234_createRepositoryAddIssueTest() {
@@ -24,11 +24,6 @@ public class CreateRepositoryAddIssueTest_PO {
 		SimpleDateFormat dateFormat2 = new SimpleDateFormat("MMM dd, yyyy - HH:mm:ss");
 		Date testStartTime = new Date();
 		
-		System.setProperty("webdriver.chrome.driver", "webdrivers/chromedriver.exe");
-		WebDriver driver = new ChromeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-
 		String username = "ronyb-jb";
 		String password = "jbaug2019";
 		String repositoryName = "new-repo-" + dateFormat1.format(testStartTime);
@@ -57,5 +52,17 @@ public class CreateRepositoryAddIssueTest_PO {
 		
 		GitHubRepositoryIssuesPage gitHubRepositoryIssuesPage = new GitHubRepositoryIssuesPage(driver);
 		gitHubRepositoryIssuesPage.clickNewIssueButton(username, repositoryName);
+		
+		GitHubCreateNewIssuePage gitHubCreateNewIssuePage = new GitHubCreateNewIssuePage(driver);
+		
+		String titleForNewIssue = "This is the issue title";
+		gitHubCreateNewIssuePage.writeTitle(titleForNewIssue);
+		gitHubCreateNewIssuePage.writeComment("This is the issue body");
+		gitHubCreateNewIssuePage.clickSubmitNewIssueButton();
+		
+		GitHubExistingIssuePage gitHubExistingIssuePage = new GitHubExistingIssuePage(driver);
+		String titleOnPage = gitHubExistingIssuePage.getTitle();
+		
+		Assert.assertEquals(titleOnPage, titleForNewIssue, "Issue title should be: '" + titleForNewIssue + "'");
 	}
 }

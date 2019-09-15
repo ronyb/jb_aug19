@@ -1,4 +1,4 @@
-package il.co.jb.pages;
+package il.co.jb.infra.pages;
 
 import org.openqa.selenium.WebDriver;
 
