@@ -6,6 +6,13 @@
 	<artifactId>github-automation</artifactId>
 	<version>1.0</version>
 
+	<repositories>
+		<repository>
+			<id>topq</id>
+			<url>http://maven.top-q.co.il/content/groups/public</url>
+		</repository>
+	</repositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -16,6 +23,11 @@
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>6.9.9</version>
+		</dependency>
+		<dependency>
+			<groupId>il.co.topq.difido</groupId>
+			<artifactId>difido-testng</artifactId>
+			<version>LATEST</version>
 		</dependency>
 	</dependencies>
 
@@ -30,5 +42,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	
+
 </project>
