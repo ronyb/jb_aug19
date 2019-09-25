@@ -16,8 +16,7 @@ import il.co.jb.amazon.auto.infra.utils.AssertUtils;
 
 public class DataProviderExamples extends AbstractTest {
 
-	@Test(dataProvider = "csvParamsProvider")
-	//@Test(dataProvider = "objectParamsProvider")
+	@Test(dataProvider = "objectParamsProvider")
 	public void searchFromMainLandingPage(SearchItem searchItem) throws Exception {
 		
 		browseToUrl(MainConfig.baseUrl);
@@ -26,7 +25,7 @@ public class DataProviderExamples extends AbstractTest {
 		amazonLandingPage.writeToSearchbox(searchItem.searchTerm);
 		
 		AmazonSearchResultsPage amazonSearchResultsPage = amazonLandingPage.clickOnGoButton();
-		takeScreenshot("\"" + searchItem.searchTerm + "\" - Search results");
+		//takeScreenshot("\"" + searchItem.searchTerm + "\" - Search results");
 		
 		String searchResultTitle = amazonSearchResultsPage.getSearchResultTitleByIndex(searchItem.itemIndex);
 		
@@ -34,7 +33,7 @@ public class DataProviderExamples extends AbstractTest {
 	}
 	
 	@Test(dataProvider = "simpleParamsProvider")
-	public void searchFromMainLandingPage1(String searchTerm, int index, String expected) {
+	public void simpleParamsProviderTest(String searchTerm, int index, String expected) {
 		
 		report.log("searchTerm = " + searchTerm);
 		report.log("itemIndex = " + index);

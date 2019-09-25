@@ -6,7 +6,7 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class _003_AmazonLoginTest extends AbstractTest {
+public class _002_AmazonLoginTest extends AbstractTest {
 
 	@Test
 	public void _003_AmazonLogin() {
