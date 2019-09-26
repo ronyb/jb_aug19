@@ -1,0 +1,19 @@
+<suite name="Suite1" verbose="1">
+
+	<test name="Regression1">
+		
+		<groups>
+			<run>
+				<exclude name="even" />
+				<include name="odd" />
+			</run>
+		</groups>
+
+		<classes>
+			<class name="il.co.jb.amazon.auto.tests.TestsByGroups"></class>
+		</classes>
+		
+	</test>
+
+
+</suite>
