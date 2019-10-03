@@ -16,7 +16,8 @@ import il.co.jb.amazon.auto.infra.utils.AssertUtils;
 
 public class DataProviderExamples extends AbstractTest {
 
-	@Test(dataProvider = "objectParamsProvider")
+	//@Test(dataProvider = "objectParamsProvider")
+	@Test(dataProvider = "csvParamsProvider")
 	public void searchFromMainLandingPage(SearchItem searchItem) throws Exception {
 		
 		browseToUrl(MainConfig.baseUrl);

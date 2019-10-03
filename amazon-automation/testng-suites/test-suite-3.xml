@@ -10,7 +10,7 @@
 		</groups>
 
 		<classes>
-			<class name="il.co.jb.amazon.auto.tests.TestsByGroups"></class>
+			<class name="il.co.jb.amazon.auto.tests.TestNgGroups"></class>
 		</classes>
 		
 	</test>
