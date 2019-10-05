@@ -57,6 +57,9 @@ public class AndroidGoogleMapsTest {
 //        String searchFor = "Statue of Liberty";
 //        String addressShouldContain = "New York";
         
+//        String searchFor = "Eiffel Tower";
+//        String addressShouldContain = "Paris";
+        
         // 1. If 'Sign in' offer is shown - click 'SKIP'
 		List<MobileElement> buttons = driver.findElements(By.xpath("//android.widget.Button[@text='SKIP']"));
         
@@ -72,9 +75,10 @@ public class AndroidGoogleMapsTest {
         driver.findElement(By.xpath("//android.widget.EditText[@text='Search here']")).sendKeys(searchFor);
         
         Thread.sleep(2000);
-        
+
         // 4. Read the location name and address of the first search result, and print them
-        MobileElement firstResultElement = driver.findElements(By.className("android.widget.RelativeLayout")).get(0);
+        List<MobileElement> resultElements = driver.findElements(By.xpath("//android.widget.LinearLayout[count(android.widget.TextView)=2]"));
+        MobileElement firstResultElement = resultElements.get(0);
         List<MobileElement> textElements = firstResultElement.findElements(By.className("android.widget.TextView"));
         String placeName = textElements.get(0).getText();
         String placeAddress = textElements.get(1).getText();

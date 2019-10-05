@@ -18,8 +18,12 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class AndroidCalculatorTest {
 
-	private final static String APP_PACKAGE_NAME = "com.android.calculator2";
-    private final static String APP_ACTIVITY_NAME = ".Calculator";
+	// old app version
+	//private final static String APP_PACKAGE_NAME = "com.android.calculator2";
+    //private final static String APP_ACTIVITY_NAME = ".Calculator";
+    
+	private final static String APP_PACKAGE_NAME = "com.google.android.calculator";
+    private final static String APP_ACTIVITY_NAME = "com.android.calculator2.Calculator";
 
     private AndroidDriver<MobileElement> driver;
     
@@ -49,10 +53,18 @@ public class AndroidCalculatorTest {
 	@Test
 	public void mobileCalculatorTest() {
 		
+		// old app version
+        /*
         driver.findElement(By.id("com.android.calculator2:id/digit_1")).click();
         driver.findElement(By.id("com.android.calculator2:id/op_add")).click();
         driver.findElement(By.id("com.android.calculator2:id/digit_2")).click();
         MobileElement resultBox = driver.findElement(By.id("com.android.calculator2:id/result"));
+        */
+		
+        driver.findElement(By.id("com.google.android.calculator:id/digit_1")).click();
+        driver.findElement(By.id("com.google.android.calculator:id/op_add")).click();
+        driver.findElement(By.id("com.google.android.calculator:id/digit_2")).click();
+        MobileElement resultBox = driver.findElement(By.id("com.google.android.calculator:id/result_preview"));
         String result = resultBox.getText();
         
         System.out.println("Result: " + result);
@@ -62,6 +74,6 @@ public class AndroidCalculatorTest {
     
     @AfterClass
     public void afterClass() throws Exception {
-        driver.quit();
+        //driver.quit();
     }
 }
